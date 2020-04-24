@@ -1,7 +1,12 @@
 import React from 'react';
+import MainTemplate from 'templates/MainTemplate';
 
 function Root() {
-  return <div className="App">Test</div>;
+  return (
+    <MainTemplate>
+      <>Test</>
+    </MainTemplate>
+  );
 }
 
 export default Root;

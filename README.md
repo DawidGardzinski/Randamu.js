@@ -14,6 +14,7 @@ instructions are provided directly in the app
 + Husky
 + Atomic design
 + React Router
++ prop-types
 
 ## Available languages
 + English
