@@ -12,6 +12,8 @@ instructions are provided directly in the app
 + Eslint
 + Prettier
 + Husky
++ Atomic design
++ React Router
 
 ## Available languages
 + English
