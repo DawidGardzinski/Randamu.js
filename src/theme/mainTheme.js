@@ -7,4 +7,8 @@ export const theme = {
     l: '2.4rem',
     xl: '4rem',
   },
+  fontWeight: {
+    light: 300,
+    bold: 600,
+  },
 };
