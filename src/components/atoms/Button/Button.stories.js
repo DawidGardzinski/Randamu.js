@@ -19,7 +19,7 @@ const Background = styled.div`
 
 export default {
   component: Button,
-  title: 'Button',
+  title: 'Atoms/Button',
   decorators: [
     (storyFn) => (
       <Background>{storyFn()}</Background>
@@ -27,26 +27,26 @@ export default {
   ],
 };
 
-export const defaultBtn = () => (
+export const Default = () => (
   <Button>Finish</Button>
 );
 
-export const nextBtn = () => (
+export const next = () => (
   <Button next>next step</Button>
 );
 
-export const startBtn = () => (
+export const start = () => (
   <Background customBground="white">
     <Button start />
   </Background>
 );
 
-export const backBtn = () => (
+export const back = () => (
   <Background customBground="white">
     <Button back />
   </Background>
 );
 
-export const modeBtn = () => (
+export const mode = () => (
   <Button mode>template</Button>
 );
