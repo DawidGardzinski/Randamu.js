@@ -11,4 +11,9 @@ export const theme = {
     light: 300,
     bold: 600,
   },
+  color: {
+    primary: '#E3B601',
+    secondary: '#A28307',
+    black: '#000000',
+  },
 };
