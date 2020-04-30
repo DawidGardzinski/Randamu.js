@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Button from './Button';
+import Label from './Label';
 
 const Background = styled.div`
   display: flex;
@@ -19,8 +19,8 @@ const Background = styled.div`
 `;
 
 export default {
-  component: Button,
-  title: 'Atoms/Button',
+  component: Label,
+  title: 'Atoms/Label',
   decorators: [
     (storyFn) => (
       <Background>{storyFn()}</Background>
@@ -28,26 +28,12 @@ export default {
   ],
 };
 
-export const Default = () => (
-  <Button>Finish</Button>
+export const number = () => <Label>Number</Label>;
+
+export const checkbox = () => (
+  <Label checkbox>checkbox</Label>
 );
 
-export const next = () => (
-  <Button next>next step</Button>
-);
-
-export const start = () => (
-  <Background customBground="white">
-    <Button start />
-  </Background>
-);
-
-export const back = () => (
-  <Background customBground="white">
-    <Button back />
-  </Background>
-);
-
-export const mode = () => (
-  <Button mode>template</Button>
+export const radio = () => (
+  <Label radio>radio</Label>
 );

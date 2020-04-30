@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Input from './Input';
+import InputWithLabel from './InputWithLabel';
 
 const Background = styled.div`
   display: flex;
@@ -19,8 +19,8 @@ const Background = styled.div`
 `;
 
 export default {
-  component: Input,
-  title: 'Atoms/Input',
+  component: InputWithLabel,
+  title: 'Molecules/InputWithLabel',
   decorators: [
     (storyFn) => (
       <Background>{storyFn()}</Background>
@@ -29,15 +29,35 @@ export default {
 };
 
 export const number = () => (
-  <Input type="number" />
+  <InputWithLabel
+    type="number"
+    labelText="Number"
+    id="num"
+    name="num"
+  />
 );
-
+export const radio = () => (
+  <InputWithLabel
+    type="radio"
+    labelText="JSON"
+    id="radio"
+    name="radio"
+  />
+);
 export const checkbox = () => (
-  <Input type="checkbox" />
+  <InputWithLabel
+    type="checkbox"
+    labelText="enabled"
+    id="box"
+    name="box"
+  />
 );
-
 export const checkboxDisabled = () => (
-  <Input type="checkbox" disabled />
+  <InputWithLabel
+    type="checkbox"
+    labelText="disabled"
+    id="box"
+    name="box"
+    disabled
+  />
 );
-
-export const radio = () => <Input type="radio" />;

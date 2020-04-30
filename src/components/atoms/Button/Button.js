@@ -13,6 +13,7 @@ const Button = styled.button`
   border-radius: 50px;
   text-transform: uppercase;
   color: ${({ theme }) => theme.color.secondary};
+  cursor: pointer;
 
   ${({ next }) =>
     next &&
@@ -43,8 +44,8 @@ const Button = styled.button`
         padding: 5px 70px;
         background-image: url(${backArrowIcon});
         background-repeat: no-repeat;
-        background-position: 20px 50%;
-        padding: 0 0 0 55px;
+        background-position: 0 50%;
+        padding: 0 0 0 35px;
         background-color: #ffffffff;
 
         ::before {
