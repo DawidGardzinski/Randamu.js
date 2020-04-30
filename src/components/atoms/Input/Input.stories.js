@@ -30,3 +30,13 @@ export default {
 export const number = () => (
   <Input type="number" />
 );
+
+export const checkbox = () => (
+  <Input type="checkbox" />
+);
+
+export const checkboxDisabled = () => (
+  <Input type="checkbox" disabled />
+);
+
+export const radio = () => <Input type="radio" />;
