@@ -41,6 +41,13 @@ const StyledButton = styled(Button)`
   font-size: ${({ theme }) => theme.fontSize.s};
 `;
 
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+  max-height: 280px;
+  overflow: auto;
+`;
+
 const Message = ({ children }) => (
   <>
     <StyledWrapper>
@@ -48,7 +55,7 @@ const Message = ({ children }) => (
         <StyledHeading>
           Your object will contain:
         </StyledHeading>
-        {children}
+        <StyledList>{children}</StyledList>
       </div>
       <StyledButton>OK</StyledButton>
     </StyledWrapper>

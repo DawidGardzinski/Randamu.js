@@ -1,4 +1,5 @@
 import React from 'react';
+import MessageElement from 'components/atoms/MessageElement/MessageElement';
 import Message from './Message';
 
 export default {
@@ -8,8 +9,10 @@ export default {
 
 export const message = () => (
   <Message>
-    <div>Test</div>
-    <div>Test</div>
-    <div>Test</div>
+    <MessageElement>Id</MessageElement>
+    <MessageElement>Sex</MessageElement>
+    <MessageElement>Name</MessageElement>
+    <MessageElement>Surname</MessageElement>
+    <MessageElement>Car</MessageElement>
   </Message>
 );
