@@ -3,8 +3,15 @@ import styled, { css } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import warningIcon from 'assets/warning.svg';
 import PropTypes from 'prop-types';
+import Curtain from 'components/atoms/Curtain/Curtain';
 
 const StyledWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: ${({ theme }) =>
+    theme.color.white};
   display: grid;
   justify-items: center;
   height: 500px;
@@ -14,6 +21,7 @@ const StyledWrapper = styled.div`
     ${({ theme }) => theme.color.darkRed};
   padding: 20px;
   color: ${({ theme }) => theme.color.darkRed};
+  z-index: 9;
 `;
 
 const StyledButton = styled(Button)`
@@ -66,14 +74,19 @@ const FlexboxWrapper = styled.div`
 `;
 
 const Warning = ({ children }) => (
-  <StyledWrapper>
-    <WarningHeading>Warning</WarningHeading>
-    <StyledParagraph>{children}</StyledParagraph>
-    <FlexboxWrapper>
-      <StyledButton>Yes</StyledButton>
-      <StyledButton deny>No</StyledButton>
-    </FlexboxWrapper>
-  </StyledWrapper>
+  <>
+    <StyledWrapper>
+      <WarningHeading>Warning</WarningHeading>
+      <StyledParagraph>
+        {children}
+      </StyledParagraph>
+      <FlexboxWrapper>
+        <StyledButton>Yes</StyledButton>
+        <StyledButton deny>No</StyledButton>
+      </FlexboxWrapper>
+    </StyledWrapper>
+    <Curtain />
+  </>
 );
 
 Warning.propTypes = {
