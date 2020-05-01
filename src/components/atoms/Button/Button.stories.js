@@ -48,8 +48,8 @@ export const back = () => (
   </Background>
 );
 
-export const mode = () => (
-  <Button mode>template</Button>
+export const block = () => (
+  <Button block>template</Button>
 );
 
 export const information = () => (

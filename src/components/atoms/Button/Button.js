@@ -41,20 +41,20 @@ const Button = styled.button`
     ${({ back }) =>
       back &&
       css`
-        padding: 5px 70px;
+        height: 35px;
         background-image: url(${backArrowIcon});
         background-repeat: no-repeat;
         background-position: 0 50%;
         padding: 0 0 0 35px;
-        background-color: #ffffffff;
+        background-color: #ffffff00;
 
         ::before {
           content: 'Back';
         }
       `}
 
-    ${({ mode }) =>
-      mode &&
+    ${({ block }) =>
+      block &&
       css`
         font-size: ${({ theme }) =>
           theme.fontSize.s};
