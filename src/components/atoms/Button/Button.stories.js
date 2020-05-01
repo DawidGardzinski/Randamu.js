@@ -51,3 +51,7 @@ export const back = () => (
 export const mode = () => (
   <Button mode>template</Button>
 );
+
+export const information = () => (
+  <Button info>?</Button>
+);

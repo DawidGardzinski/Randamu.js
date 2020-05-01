@@ -64,6 +64,15 @@ const Button = styled.button`
           theme.color.black};
         border-radius: 15px 0 15px 0;
       `}
+
+    ${({ info }) =>
+      info &&
+      css`
+        font-size: ${({ theme }) =>
+          theme.fontSize.xl};
+        background-color: #ffffff00;
+        padding: 5px 10px;
+      `}
 `;
 
 export default Button;

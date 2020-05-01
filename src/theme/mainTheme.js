@@ -3,6 +3,7 @@ export const theme = {
     xxs: '1rem',
     xs: '1.2rem',
     s: '1.6rem',
+    sm: '1.9rem',
     m: '2.1rem',
     l: '2.4rem',
     xl: '4rem',
@@ -18,5 +19,7 @@ export const theme = {
     white: '#ffffff',
     green: '#32CC46',
     gray: '#A5A2A2',
+    darkRed: '#B10000',
+    darkGreen: '#069969',
   },
 };
