@@ -12,6 +12,11 @@ const StyledWrapper = styled.div`
   justify-content: space-between;
   padding: 7px 0;
   margin-bottom: 15px;
+
+  @media (min-width: 730px) {
+    border-radius: 25px;
+    padding: 7px 10px;
+  }
 `;
 
 const StyledHeading = styled.h2`

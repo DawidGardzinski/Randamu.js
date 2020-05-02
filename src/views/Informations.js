@@ -2,6 +2,7 @@ import React from 'react';
 import TopBar from 'components/molecules/TopBar/TopBar';
 import styled from 'styled-components';
 import { routes } from 'routes';
+import GridTemplate from 'templates/GridTemplate';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ const StyledParagraph = styled.p`
 `;
 
 const Informations = () => (
-  <>
+  <GridTemplate>
     <TopBar
       mode="Informations"
       path={routes.home}
@@ -43,7 +44,7 @@ const Informations = () => (
         opportunity to make objects on your own.
       </StyledParagraph>
     </StyledWrapper>
-  </>
+  </GridTemplate>
 );
 
 export default Informations;
