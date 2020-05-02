@@ -11,7 +11,6 @@ const Button = styled.button`
   padding: 5px 50px;
   font-size: ${({ theme }) => theme.fontSize.m};
   border-radius: 50px;
-  text-transform: uppercase;
   color: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
 
@@ -22,6 +21,7 @@ const Button = styled.button`
       background-image: url(${arrowIcon});
       background-repeat: no-repeat;
       background-position: 90% 50%;
+      text-transform: uppercase;
     `}
 
   ${({ start }) =>
@@ -49,7 +49,7 @@ const Button = styled.button`
         background-color: #ffffff00;
 
         ::before {
-          content: 'Back';
+          content: 'BACK';
         }
       `}
 
@@ -63,6 +63,9 @@ const Button = styled.button`
         color: ${({ theme }) =>
           theme.color.black};
         border-radius: 15px 0 15px 0;
+        background-color: ${({ theme }) =>
+          theme.color.white};
+        min-width: 260px;
       `}
 
     ${({ info }) =>
@@ -72,6 +75,9 @@ const Button = styled.button`
           theme.fontSize.xl};
         background-color: #ffffff00;
         padding: 5px 10px;
+        text-transform: uppercase;
+        font-weight: ${({ theme }) =>
+          theme.fontWeight.light};
       `}
 `;
 

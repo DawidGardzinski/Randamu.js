@@ -6,6 +6,7 @@ export const theme = {
     sm: '1.9rem',
     m: '2.1rem',
     l: '2.4rem',
+    extral: '3rem',
     xl: '4rem',
     xxl: '6rem',
   },

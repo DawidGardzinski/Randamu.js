@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from 'theme/mainTheme';
 
 const GlobalStyle = createGlobalStyle`
     *,*::before,*::after {
@@ -13,7 +14,9 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         font-size: 1.6rem;
+        margin: 0;
         font-family: 'Nunito', sans-serif;
+        background-color: ${theme.color.primary};
     }
 `;
 
