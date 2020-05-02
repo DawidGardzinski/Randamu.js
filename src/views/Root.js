@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import Home from 'views/Home';
+import Informations from 'views/Informations';
 import { routes } from 'routes';
 
 function Root() {
@@ -17,6 +18,10 @@ function Root() {
             exact
             path={routes.home}
             component={Home}
+          />
+          <Route
+            path={routes.info}
+            component={Informations}
           />
         </Switch>
       </BrowserRouter>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const StyledWrapper = styled.div`
   background-color: ${({ theme }) =>
@@ -10,6 +11,7 @@ const StyledWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 7px 0;
+  margin-bottom: 15px;
 `;
 
 const StyledHeading = styled.h2`
@@ -20,15 +22,16 @@ const StyledHeading = styled.h2`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
-const TopBar = ({ mode }) => (
+const TopBar = ({ mode, path }) => (
   <StyledWrapper>
-    <Button back />
+    <Button as={Link} to={path} back={1} />
     <StyledHeading>{mode}</StyledHeading>
   </StyledWrapper>
 );
 
 TopBar.propTypes = {
   mode: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default TopBar;

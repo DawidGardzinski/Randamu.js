@@ -37,7 +37,7 @@ const StyledNavButton = styled(Button)`
 `;
 
 const StyledHelpButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   right: 10px;
   bottom: 10px;
   text-decoration: none;
@@ -47,7 +47,7 @@ const StyledHelpButton = styled(Button)`
 `;
 
 const StyledLangButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   left: 10px;
   bottom: 10px;
 `;

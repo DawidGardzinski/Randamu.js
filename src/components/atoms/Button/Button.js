@@ -47,7 +47,10 @@ const Button = styled.button`
         background-position: 0 50%;
         padding: 0 0 0 35px;
         background-color: #ffffff00;
-
+        text-decoration: none;
+        line-height: 35px;
+        font-size: ${({ theme }) =>
+          theme.fontSize.m};
         ::before {
           content: 'BACK';
         }
