@@ -13,6 +13,10 @@ const Button = styled.button`
   border-radius: 50px;
   color: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  background-color: ${({ theme }) =>
+    theme.color.white};
 
   ${({ next }) =>
     next &&
@@ -22,6 +26,7 @@ const Button = styled.button`
       background-repeat: no-repeat;
       background-position: 90% 50%;
       text-transform: uppercase;
+      line-height: 45px;
     `}
 
   ${({ start }) =>
@@ -47,7 +52,6 @@ const Button = styled.button`
         background-position: 0 50%;
         padding: 0 0 0 35px;
         background-color: #ffffff00;
-        text-decoration: none;
         line-height: 35px;
         font-size: ${({ theme }) =>
           theme.fontSize.m};

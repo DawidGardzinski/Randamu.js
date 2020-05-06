@@ -56,8 +56,8 @@ export const checkboxDisabled = () => (
   <InputWithLabel
     type="checkbox"
     labelText="disabled"
-    id="box"
-    name="box"
+    id="box11"
+    name="box11"
     disabled
   />
 );

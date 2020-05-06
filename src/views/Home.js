@@ -29,10 +29,8 @@ const StyledNav = styled.nav`
 `;
 
 const StyledNavButton = styled(Button)`
-  text-decoration: none;
   display: block;
   line-height: 45px;
-  text-align: center;
   font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
@@ -40,7 +38,6 @@ const StyledHelpButton = styled(Button)`
   position: fixed;
   right: 10px;
   bottom: 10px;
-  text-decoration: none;
   display: block;
   font-weight: ${({ theme }) =>
     theme.fontWeight.bold};
@@ -59,23 +56,20 @@ const Home = () => (
       <StyledNavButton
         as={NavLink}
         to={routes.templates}
-        block={1}
-      >
+        block={1}>
         Templates
       </StyledNavButton>
       <StyledNavButton
         as={NavLink}
         to={routes.custom}
-        block={1}
-      >
+        block={1}>
         Custom
       </StyledNavButton>
     </StyledNav>
     <StyledHelpButton
       as={Link}
       to={routes.info}
-      info={1}
-    >
+      info={1}>
       ?
     </StyledHelpButton>
     <StyledLangButton info>EN</StyledLangButton>

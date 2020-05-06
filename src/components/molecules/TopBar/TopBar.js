@@ -27,16 +27,38 @@ const StyledHeading = styled.h2`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
-const TopBar = ({ mode, path }) => (
+const StyledStep = styled.p`
+  display: none;
+  @media (min-width: 730px) {
+    display: block;
+    margin: 0;
+    line-height: 35px;
+    color: ${({ theme }) =>
+      theme.color.secondary};
+    font-size: ${({ theme }) => theme.fontSize.l};
+    font-weight: ${({ theme }) =>
+      theme.fontWeight.bold};
+  }
+`;
+
+const TopBar = ({ mode, path, step }) => (
   <StyledWrapper>
     <Button as={Link} to={path} back={1} />
     <StyledHeading>{mode}</StyledHeading>
+    {step !== 0 && (
+      <StyledStep>Step {step}</StyledStep>
+    )}
   </StyledWrapper>
 );
+
+TopBar.defaultProps = {
+  step: 0,
+};
 
 TopBar.propTypes = {
   mode: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
+  step: PropTypes.number,
 };
 
 export default TopBar;

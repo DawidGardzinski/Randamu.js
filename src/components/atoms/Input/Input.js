@@ -54,21 +54,11 @@ const Input = styled.input`
   ${({ type }) =>
     type === 'radio' &&
     css`
-      margin: 0;
-      cursor: pointer;
-      ::before {
-        content: '';
-        display: block;
-        width: 45px;
-        height: 45px;
+      position: absolute;
+      left: -9999px;
+      :checked + label::before {
         background-color: ${({ theme }) =>
-          theme.color.white};
-        border-radius: 50px;
-        transform: translate(-40%, -40%);
-      }
-      :checked:before {
-        background-color: ${({ theme }) =>
-          theme.color.green};
+          theme.color.darkGreen};
       }
     `}
 
