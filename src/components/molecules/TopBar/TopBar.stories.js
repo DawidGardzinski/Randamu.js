@@ -26,8 +26,13 @@ export default {
 };
 
 export const custom = () => (
-  <TopBar mode="Custom" />
+  <TopBar mode="Custom" step={1} path="/" />
 );
+
 export const template = () => (
-  <TopBar mode="Template" />
+  <TopBar mode="Template" step={1} path="/" />
+);
+
+export const information = () => (
+  <TopBar mode="Template" path="/" />
 );

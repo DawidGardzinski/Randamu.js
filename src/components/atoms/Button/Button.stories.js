@@ -44,7 +44,7 @@ export const start = () => (
 
 export const back = () => (
   <Background customBground="white">
-    <Button back />
+    <Button back={1} />
   </Background>
 );
 
