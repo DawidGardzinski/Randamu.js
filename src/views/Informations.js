@@ -1,5 +1,6 @@
 import React from 'react';
 import TopBar from 'components/molecules/TopBar/TopBar';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import styled from 'styled-components';
 import { routes } from 'routes';
 import GridTemplate from 'templates/GridTemplate';
@@ -17,11 +18,6 @@ const StyledHeading = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.l};
 `;
 
-const StyledParagraph = styled.p`
-  color: ${({ theme }) => theme.color.white};
-  font-size: ${({ theme }) => theme.fontSize.m};
-`;
-
 const Informations = () => (
   <GridTemplate>
     <TopBar
@@ -30,19 +26,19 @@ const Informations = () => (
     />
     <StyledWrapper>
       <StyledHeading>About</StyledHeading>
-      <StyledParagraph>
+      <Paragraph>
         Randamu.js is JavaScript server less
         application which allows you to get
         example data for your projects
-      </StyledParagraph>
+      </Paragraph>
 
       <StyledHeading>Introduction</StyledHeading>
-      <StyledParagraph>
+      <Paragraph>
         Everything you have to do is choose mode.
         <b>Templates</b> mode contains previously
         prepared objects. <b>Custom</b> gives you
         opportunity to make objects on your own.
-      </StyledParagraph>
+      </Paragraph>
     </StyledWrapper>
   </GridTemplate>
 );

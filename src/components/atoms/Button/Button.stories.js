@@ -33,12 +33,12 @@ export const Default = () => (
 );
 
 export const next = () => (
-  <Button next>next step</Button>
+  <Button next={1}>next step</Button>
 );
 
 export const start = () => (
   <Background customBground="white">
-    <Button start />
+    <Button start={1} />
   </Background>
 );
 
@@ -49,9 +49,9 @@ export const back = () => (
 );
 
 export const block = () => (
-  <Button block>template</Button>
+  <Button block={1}>template</Button>
 );
 
 export const information = () => (
-  <Button info>?</Button>
+  <Button info={1}>?</Button>
 );

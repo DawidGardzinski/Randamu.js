@@ -2,6 +2,7 @@ import React from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import TopBar from 'components/molecules/TopBar/TopBar';
 import Button from 'components/atoms/Button/Button';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import styled from 'styled-components';
 import InputWithLabel from 'components/molecules/InputWithLabel/InputWithLabel';
 import {
@@ -41,16 +42,6 @@ const StyledLi = styled.li`
   padding-left: 20px;
 `;
 
-const InfoParagraph = styled.p`
-  color: ${({ theme }) => theme.color.secondary};
-  font-size: ${({ theme }) => theme.fontSize.m};
-  text-align: center;
-  font-weight: ${({ theme }) =>
-    theme.fontWeight.bold};
-  padding: 0 10px;
-  margin: 0;
-`;
-
 const StyledContainer = styled.div`
   display: grid;
   gap: 20px;
@@ -79,10 +70,10 @@ const Custom = () => {
       <StyledWrapper>
         {step === 1 && (
           <>
-            <InfoParagraph>
+            <Paragraph view={1}>
               Select what your data object should
               include
-            </InfoParagraph>
+            </Paragraph>
             <StyledUL>
               <StyledLi>
                 <InputWithLabel
@@ -146,10 +137,10 @@ const Custom = () => {
         )}
         {step === 2 && (
           <>
-            <InfoParagraph>
+            <Paragraph view={1}>
               How many objects do you want to
               have?
-            </InfoParagraph>
+            </Paragraph>
             <InputWithLabel
               type="number"
               labelText="Number"
@@ -160,9 +151,9 @@ const Custom = () => {
         )}
         {step === 3 && (
           <>
-            <InfoParagraph>
+            <Paragraph view={1}>
               Choose file format
-            </InfoParagraph>
+            </Paragraph>
             <StyledContainer>
               <InputWithLabel
                 type="radio"
