@@ -6,6 +6,10 @@ export default {
   title: 'Atoms/Paragraph',
 };
 
-export const test = () => (
+export const normal = () => (
   <Paragraph>Test</Paragraph>
+);
+
+export const view = () => (
+  <Paragraph view={1}>test</Paragraph>
 );

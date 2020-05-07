@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -16,15 +17,21 @@ const StyledWrapper = styled.div`
   @media (min-width: 730px) {
     border-radius: 25px;
     padding: 7px 10px;
+    position: relative;
   }
 `;
 
-const StyledHeading = styled.h2`
-  margin: 0;
+const StyledHeading = styled(Heading)`
   height: 35px;
   line-height: 35px;
   padding: 0 20px;
   color: ${({ theme }) => theme.color.darkGray};
+  @media (min-width: 730px) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
 const StyledStep = styled.p`
@@ -44,7 +51,7 @@ const StyledStep = styled.p`
 const TopBar = ({ mode, path, step }) => (
   <StyledWrapper>
     <Button as={Link} to={path} back={1} />
-    <StyledHeading>{mode}</StyledHeading>
+    <StyledHeading as="h2">{mode}</StyledHeading>
     {step !== 0 && (
       <StyledStep>Step {step}</StyledStep>
     )}

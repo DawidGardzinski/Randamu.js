@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'components/atoms/Button/Button';
+import Heading from 'components/atoms/Heading/Heading';
 import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 import { routes } from 'routes';
@@ -12,9 +13,7 @@ const StyledWrapper = styled.div`
   height: 100vh;
 `;
 
-const StyledHeading = styled.h2`
-  color: ${({ theme }) => theme.color.white};
-  margin: 0;
+const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) =>
     theme.fontSize.extral};
 `;
@@ -52,7 +51,9 @@ const StyledLangButton = styled(Button)`
 const Home = () => (
   <StyledWrapper>
     <StyledNav>
-      <StyledHeading>Select mode</StyledHeading>
+      <StyledHeading as="h2">
+        Select mode
+      </StyledHeading>
       <StyledNavButton
         as={NavLink}
         to={routes.templates}
