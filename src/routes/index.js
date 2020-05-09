@@ -4,5 +4,5 @@ export const routes = {
   custom: '/custom',
   info: '/informations',
   customSteps: '/custom/step/:step',
-  templateSteps: '/template/step/:step',
+  templatesSteps: '/templates/step/:step',
 };

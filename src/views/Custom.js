@@ -33,7 +33,7 @@ const StyledUL = styled.ul`
 
   @media (min-width: 730px) {
     max-height: 330px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 `;
 
@@ -56,7 +56,7 @@ const Custom = () => {
       {(step < 1 ||
         step > 3 ||
         Number.isNaN(step)) && (
-        <Redirect to="/" />
+        <Redirect to={routes.home} />
       )}
       <TopBar
         mode="Custom"
@@ -89,47 +89,6 @@ const Custom = () => {
                   labelText="enabled"
                   id="box2"
                   name="box2"
-                />
-              </StyledLi>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="enabled"
-                  id="box3"
-                  name="box3"
-                />
-              </StyledLi>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="enabled"
-                  id="box4"
-                  name="box4"
-                />
-              </StyledLi>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="enabled"
-                  id="box5"
-                  name="box5"
-                />
-              </StyledLi>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="enabled"
-                  id="box6"
-                  name="box6"
-                />
-              </StyledLi>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="disabled"
-                  id="box11"
-                  name="box11"
-                  disabled
                 />
               </StyledLi>
             </StyledUL>

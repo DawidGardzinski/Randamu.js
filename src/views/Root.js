@@ -9,6 +9,7 @@ import {
 import Home from 'views/Home';
 import Informations from 'views/Informations';
 import Custom from 'views/Custom';
+import Templates from 'views/Templates';
 import { routes } from 'routes';
 
 function Root() {
@@ -38,6 +39,19 @@ function Root() {
           <Route
             path={routes.customSteps}
             component={Custom}
+          />
+          <Route
+            exact
+            path={routes.templates}
+            render={() => (
+              <Redirect
+                to={`${routes.templates}/step/1`}
+              />
+            )}
+          />
+          <Route
+            path={routes.templatesSteps}
+            component={Templates}
           />
         </Switch>
       </BrowserRouter>
