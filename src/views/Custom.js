@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
+import { connect } from 'react-redux';
 import TopBar from 'components/molecules/TopBar/TopBar';
 import Button from 'components/atoms/Button/Button';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
@@ -275,9 +276,8 @@ class Custom extends Component {
                       </StyledContainer>
                       <StyledButton
                         type="submit"
-                        next={1}
                         disabled={isSubmitting}>
-                        Next step
+                        Finish
                       </StyledButton>
                     </StyledFormRadio>
                   )}
@@ -301,4 +301,6 @@ Custom.propTypes = {
   }).isRequired,
 };
 
-export default Custom;
+const mapStateToProps = ({ test }) => ({ test });
+
+export default connect(mapStateToProps)(Custom);

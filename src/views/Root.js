@@ -6,6 +6,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from 'store';
 import Home from 'views/Home';
 import Informations from 'views/Informations';
 import Custom from 'views/Custom';
@@ -14,48 +16,50 @@ import { routes } from 'routes';
 
 function Root() {
   return (
-    <MainTemplate>
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path={routes.home}
-            component={Home}
-          />
-          <Route
-            exact
-            path={routes.info}
-            component={Informations}
-          />
-          <Route
-            exact
-            path={routes.custom}
-            render={() => (
-              <Redirect
-                to={`${routes.custom}/step/1`}
-              />
-            )}
-          />
-          <Route
-            path={routes.customSteps}
-            component={Custom}
-          />
-          <Route
-            exact
-            path={routes.templates}
-            render={() => (
-              <Redirect
-                to={`${routes.templates}/step/1`}
-              />
-            )}
-          />
-          <Route
-            path={routes.templatesSteps}
-            component={Templates}
-          />
-        </Switch>
-      </BrowserRouter>
-    </MainTemplate>
+    <Provider store={store}>
+      <MainTemplate>
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path={routes.home}
+              component={Home}
+            />
+            <Route
+              exact
+              path={routes.info}
+              component={Informations}
+            />
+            <Route
+              exact
+              path={routes.custom}
+              render={() => (
+                <Redirect
+                  to={`${routes.custom}/step/1`}
+                />
+              )}
+            />
+            <Route
+              path={routes.customSteps}
+              component={Custom}
+            />
+            <Route
+              exact
+              path={routes.templates}
+              render={() => (
+                <Redirect
+                  to={`${routes.templates}/step/1`}
+                />
+              )}
+            />
+            <Route
+              path={routes.templatesSteps}
+              component={Templates}
+            />
+          </Switch>
+        </BrowserRouter>
+      </MainTemplate>
+    </Provider>
   );
 }
 

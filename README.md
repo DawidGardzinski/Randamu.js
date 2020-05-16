@@ -15,6 +15,7 @@ instructions are provided directly in the app
 + Atomic design
 + React Router
 + prop-types
++ Formik
 
 ## Available languages
 + English
