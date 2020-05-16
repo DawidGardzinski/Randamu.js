@@ -9,6 +9,7 @@ const Curtain = styled.div`
   background-color: ${({ theme }) =>
     theme.color.black};
   opacity: 0.5;
+  z-index: 9998;
 `;
 
 export default Curtain;

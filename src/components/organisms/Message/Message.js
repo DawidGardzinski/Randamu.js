@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
   justify-content: center;
   font-weight: ${({ theme }) =>
     theme.fontWeight.bold};
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
     ${({ theme }) => theme.color.secondary};
   padding: 20px;
   color: ${({ theme }) => theme.color.secondary};
-  z-index: 9;
+  z-index: 9999;
 `;
 
 const StyledHeading = styled.h3`

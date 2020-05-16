@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import TopBar from 'components/molecules/TopBar/TopBar';
 import Button from 'components/atoms/Button/Button';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components';
-import InputWithLabel from 'components/molecules/InputWithLabel/InputWithLabel';
-import {
-  useParams,
-  Link,
-  Redirect,
-} from 'react-router-dom';
+import Input from 'components/atoms/Input/Input';
+import Label from 'components/atoms/Label/Label';
+import { Redirect } from 'react-router-dom';
 import { routes } from 'routes';
 
 const StyledButton = styled(Button)`
@@ -30,6 +29,7 @@ const StyledUL = styled.ul`
   list-style: none;
   width: 270px;
   margin-bottom: 30px;
+  height: 250px;
 
   @media (min-width: 730px) {
     max-height: 330px;
@@ -47,102 +47,258 @@ const StyledContainer = styled.div`
   gap: 20px;
 `;
 
-const Custom = () => {
-  let { step } = useParams();
-  step = parseInt(step, 10);
+const StyledFormNumber = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  height: 275px;
+  justify-content: space-between;
+`;
 
-  return (
-    <GridTemplate>
-      {(step < 1 ||
-        step > 3 ||
-        Number.isNaN(step)) && (
-        <Redirect to={routes.home} />
-      )}
-      <TopBar
-        mode="Custom"
-        path={
-          step > 1
-            ? `${routes.custom}/step/${step - 1}`
-            : routes.home
-        }
-        step={step}
-      />
-      <StyledWrapper>
-        {step === 1 && (
-          <>
-            <Paragraph view={1}>
-              Select what your data object should
-              include
-            </Paragraph>
-            <StyledUL>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="enabled"
-                  id="box1"
-                  name="box1"
-                />
-              </StyledLi>
-              <StyledLi>
-                <InputWithLabel
-                  type="checkbox"
-                  labelText="enabled"
-                  id="box2"
-                  name="box2"
-                />
-              </StyledLi>
-            </StyledUL>
-          </>
-        )}
-        {step === 2 && (
-          <>
-            <Paragraph view={1}>
-              How many objects do you want to
-              have?
-            </Paragraph>
-            <InputWithLabel
-              type="number"
-              labelText="Number"
-              id="num"
-              name="num"
-            />
-          </>
-        )}
-        {step === 3 && (
-          <>
-            <Paragraph view={1}>
-              Choose file format
-            </Paragraph>
-            <StyledContainer>
-              <InputWithLabel
-                type="radio"
-                labelText="JSON"
-                id="radio"
-                name="radio"
-              />
-              <InputWithLabel
-                type="radio"
-                labelText="YML"
-                id="radio2"
-                name="radio"
-              />
-            </StyledContainer>
-          </>
-        )}
-        {step !== 3 ? (
-          <StyledButton
-            as={Link}
-            to={`${routes.custom}/step/${
-              step + 1
-            }`}
-            next={1}>
-            next step
-          </StyledButton>
-        ) : (
-          <StyledButton>Finish</StyledButton>
-        )}
-      </StyledWrapper>
-    </GridTemplate>
-  );
+const StyledFormRadio = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  height: 275px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StyledInputNumberWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+class Custom extends Component {
+  state = {
+    step: 1,
+  };
+
+  componentDidMount() {
+    const { match } = this.props;
+
+    this.setState({
+      step: parseInt(match.params.step, 10),
+    });
+  }
+
+  componentDidUpdate() {
+    const { match } = this.props;
+    const { step } = this.state;
+    if (
+      step !== parseInt(match.params.step, 10)
+    ) {
+      this.setState({
+        step: parseInt(match.params.step, 10),
+      });
+    }
+  }
+
+  render() {
+    const { step } = this.state;
+    const { history } = this.props;
+
+    return (
+      <>
+        <GridTemplate>
+          {(step < 1 ||
+            step > 3 ||
+            Number.isNaN(step)) && (
+            <Redirect to={routes.home} />
+          )}
+          <TopBar
+            mode="Custom"
+            path={
+              step > 1
+                ? `${routes.custom}/step/${
+                    step - 1
+                  }`
+                : routes.home
+            }
+            step={step}
+          />
+          <StyledWrapper>
+            {step === 1 && (
+              <>
+                <Paragraph view={1}>
+                  Select what your data object
+                  should include
+                </Paragraph>
+                <Formik
+                  initialValues={{
+                    id: true,
+                    name: false,
+                    surname: false,
+                  }}
+                  onSubmit={(
+                    values,
+                    { setSubmitting },
+                  ) => {
+                    setTimeout(() => {
+                      console.log(values);
+                      setSubmitting(false);
+                      history.push(
+                        '/custom/step/2',
+                      );
+                    }, 400);
+                  }}>
+                  {({ isSubmitting }) => (
+                    <Form>
+                      <StyledUL>
+                        <StyledLi>
+                          <Field
+                            as={Input}
+                            type="checkbox"
+                            id="surname"
+                            name="surname"
+                          />
+                          <Label
+                            htmlFor="surname"
+                            checkbox>
+                            Surname
+                          </Label>
+                        </StyledLi>
+                      </StyledUL>
+                      <StyledButton
+                        type="submit"
+                        next={1}
+                        disabled={isSubmitting}>
+                        Next step
+                      </StyledButton>
+                    </Form>
+                  )}
+                </Formik>
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <Paragraph view={1}>
+                  How many objects do you want to
+                  have?
+                </Paragraph>
+                <Formik
+                  initialValues={{
+                    number: 10,
+                  }}
+                  validate={(values) => {
+                    const errors = {};
+                    if (values.number < 1) {
+                      errors.number =
+                        'Can not be less then 1';
+                    }
+                    return errors;
+                  }}
+                  onSubmit={(
+                    values,
+                    { setSubmitting },
+                  ) => {
+                    setTimeout(() => {
+                      console.log(values);
+                      setSubmitting(false);
+                      history.push(
+                        '/custom/step/3',
+                      );
+                    }, 400);
+                  }}>
+                  {({ isSubmitting, errors }) => (
+                    <StyledFormNumber>
+                      <StyledInputNumberWrapper>
+                        <Label htmlFor="number">
+                          Give a number
+                        </Label>
+                        <Field
+                          as={Input}
+                          type="number"
+                          id="number"
+                          name="number"
+                        />
+                        {errors.number}
+                      </StyledInputNumberWrapper>
+                      <StyledButton
+                        type="submit"
+                        next={1}
+                        disabled={isSubmitting}>
+                        Next step
+                      </StyledButton>
+                    </StyledFormNumber>
+                  )}
+                </Formik>
+              </>
+            )}
+            {step === 3 && (
+              <>
+                <Paragraph view={1}>
+                  Choose file format
+                </Paragraph>
+                <Formik
+                  initialValues={{
+                    fileType: 'none',
+                  }}
+                  onSubmit={(
+                    values,
+                    { setSubmitting },
+                  ) => {
+                    setTimeout(() => {
+                      console.log(values);
+                      setSubmitting(false);
+                      history.push(
+                        '/custom/step/3',
+                      );
+                    }, 400);
+                  }}>
+                  {({ isSubmitting }) => (
+                    <StyledFormRadio>
+                      <StyledContainer>
+                        <Field
+                          as={Input}
+                          type="radio"
+                          id="JSON"
+                          value="JSON"
+                          name="fileType"
+                        />
+                        <Label
+                          htmlFor="JSON"
+                          radio={1}>
+                          JSON
+                        </Label>
+                        <Field
+                          as={Input}
+                          type="radio"
+                          id="YML"
+                          value="YML"
+                          name="fileType"
+                        />
+                        <Label
+                          htmlFor="YML"
+                          radio={1}>
+                          YML
+                        </Label>
+                      </StyledContainer>
+                      <StyledButton
+                        type="submit"
+                        next={1}
+                        disabled={isSubmitting}>
+                        Next step
+                      </StyledButton>
+                    </StyledFormRadio>
+                  )}
+                </Formik>
+              </>
+            )}
+          </StyledWrapper>
+        </GridTemplate>
+      </>
+    );
+  }
+}
+
+Custom.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+    params: PropTypes.object.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
+
 export default Custom;
