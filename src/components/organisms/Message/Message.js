@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
 import Curtain from 'components/atoms/Curtain/Curtain';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -48,16 +49,35 @@ const StyledList = styled.ul`
   overflow: auto;
 `;
 
-const Message = ({ children }) => (
+const StyledParagraph = styled(Paragraph)`
+  color: ${({ theme }) => theme.color.secondary};
+  margin: 0;
+  font-size: ${({ theme }) => theme.fontSize.s};
+`;
+
+const Message = ({
+  children,
+  amount,
+  fileType,
+  click,
+}) => (
   <>
     <StyledWrapper>
       <div>
         <StyledHeading>
-          Your object will contain:
+          Each object will contain:
         </StyledHeading>
         <StyledList>{children}</StyledList>
+        <StyledParagraph>
+          Total amount of objects: {amount}
+        </StyledParagraph>
+        <StyledParagraph>
+          File format: {fileType}
+        </StyledParagraph>
       </div>
-      <StyledButton>OK</StyledButton>
+      <StyledButton onClick={click}>
+        OK
+      </StyledButton>
     </StyledWrapper>
     <Curtain />
   </>
@@ -68,6 +88,9 @@ Message.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  amount: PropTypes.number.isRequired,
+  fileType: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired,
 };
 
 export default Message;

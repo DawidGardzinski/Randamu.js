@@ -12,6 +12,8 @@ import Label from 'components/atoms/Label/Label';
 import { Redirect } from 'react-router-dom';
 import { routes } from 'routes';
 import { updateStore as updateStoreAction } from 'actions';
+import Message from 'components/organisms/Message/Message';
+import MessageElement from 'components/atoms/MessageElement/MessageElement';
 
 const StyledButton = styled(Button)`
   width: 275px;
@@ -72,6 +74,7 @@ const StyledInputNumberWrapper = styled.div`
 class Custom extends Component {
   state = {
     step: 1,
+    isMessage: false,
   };
 
   componentDidMount() {
@@ -94,8 +97,14 @@ class Custom extends Component {
     }
   }
 
+  handleMessageClick = () => {
+    this.setState((prevState) => ({
+      isMessage: !prevState.isMessage,
+    }));
+  };
+
   render() {
-    const { step } = this.state;
+    const { step, isMessage } = this.state;
     const {
       history,
       checkboxes,
@@ -107,6 +116,23 @@ class Custom extends Component {
 
     return (
       <>
+        {isMessage && (
+          <Message
+            amount={number}
+            fileType={fileType}
+            click={this.handleMessageClick}>
+            <MessageElement>id</MessageElement>
+            {Object.keys(objCollection).map(
+              (el) =>
+                objCollection[el] && (
+                  <MessageElement
+                    key={`${el}MSGE`}>
+                    {el}
+                  </MessageElement>
+                ),
+            )}
+          </Message>
+        )}
         <GridTemplate>
           {(step < 1 ||
             step > 3 ||
@@ -260,10 +286,15 @@ class Custom extends Component {
                         'fileType',
                         values.fileType,
                       );
-                      setSubmitting(false);
                       history.push(
                         '/custom/step/3',
                       );
+                      this.setState(
+                        (prevState) => ({
+                          isMessage: !prevState.isMessage,
+                        }),
+                      );
+                      setSubmitting(false);
                     }, 400);
                   }}>
                   {({ isSubmitting }) => (

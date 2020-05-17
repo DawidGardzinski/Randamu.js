@@ -8,7 +8,10 @@ export default {
 };
 
 export const message = () => (
-  <Message>
+  <Message
+    amount={50}
+    fileType="JSON"
+    click={() => null}>
     <MessageElement>Id</MessageElement>
     <MessageElement>Sex</MessageElement>
     <MessageElement>Name</MessageElement>
