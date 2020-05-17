@@ -1,14 +1,27 @@
 const initialState = {
-  test: 'eldo',
+  checkboxes: ['id', 'name', 'surname'],
+  number: 10,
+  fileType: 'JSON',
+  objCollection: {
+    name: false,
+    surname: false,
+  },
 };
 
 const rootReducer = (
   state = initialState,
   action,
 ) => {
-  console.log(action);
-  console.log(state);
-  return state;
+  switch (action.type) {
+    case 'UPDATE_STORE':
+      return {
+        ...state,
+        [action.payload.varToUpdate]:
+          action.payload.value,
+      };
+    default:
+      return state;
+  }
 };
 
 export default rootReducer;

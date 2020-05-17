@@ -11,6 +11,7 @@ import Input from 'components/atoms/Input/Input';
 import Label from 'components/atoms/Label/Label';
 import { Redirect } from 'react-router-dom';
 import { routes } from 'routes';
+import { updateStore as updateStoreAction } from 'actions';
 
 const StyledButton = styled(Button)`
   width: 275px;
@@ -95,7 +96,14 @@ class Custom extends Component {
 
   render() {
     const { step } = this.state;
-    const { history } = this.props;
+    const {
+      history,
+      checkboxes,
+      fileType,
+      number,
+      objCollection,
+      updateStore,
+    } = this.props;
 
     return (
       <>
@@ -124,17 +132,17 @@ class Custom extends Component {
                   should include
                 </Paragraph>
                 <Formik
-                  initialValues={{
-                    id: true,
-                    name: false,
-                    surname: false,
-                  }}
+                  initialValues={objCollection}
                   onSubmit={(
                     values,
                     { setSubmitting },
                   ) => {
                     setTimeout(() => {
                       console.log(values);
+                      updateStore(
+                        'objCollection',
+                        values,
+                      );
                       setSubmitting(false);
                       history.push(
                         '/custom/step/2',
@@ -144,19 +152,24 @@ class Custom extends Component {
                   {({ isSubmitting }) => (
                     <Form>
                       <StyledUL>
-                        <StyledLi>
-                          <Field
-                            as={Input}
-                            type="checkbox"
-                            id="surname"
-                            name="surname"
-                          />
-                          <Label
-                            htmlFor="surname"
-                            checkbox>
-                            Surname
-                          </Label>
-                        </StyledLi>
+                        {checkboxes.map((el) => (
+                          <StyledLi key={el}>
+                            <Field
+                              as={Input}
+                              type="checkbox"
+                              id={el}
+                              name={el}
+                              disabled={
+                                el === 'id'
+                              }
+                            />
+                            <Label
+                              htmlFor={el}
+                              checkbox>
+                              {el}
+                            </Label>
+                          </StyledLi>
+                        ))}
                       </StyledUL>
                       <StyledButton
                         type="submit"
@@ -178,7 +191,7 @@ class Custom extends Component {
                 </Paragraph>
                 <Formik
                   initialValues={{
-                    number: 10,
+                    number,
                   }}
                   validate={(values) => {
                     const errors = {};
@@ -194,6 +207,10 @@ class Custom extends Component {
                   ) => {
                     setTimeout(() => {
                       console.log(values);
+                      updateStore(
+                        'number',
+                        values.number,
+                      );
                       setSubmitting(false);
                       history.push(
                         '/custom/step/3',
@@ -232,14 +249,17 @@ class Custom extends Component {
                 </Paragraph>
                 <Formik
                   initialValues={{
-                    fileType: 'none',
+                    fileType,
                   }}
                   onSubmit={(
                     values,
                     { setSubmitting },
                   ) => {
                     setTimeout(() => {
-                      console.log(values);
+                      updateStore(
+                        'fileType',
+                        values.fileType,
+                      );
                       setSubmitting(false);
                       history.push(
                         '/custom/step/3',
@@ -299,8 +319,35 @@ Custom.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  checkboxes: PropTypes.arrayOf(PropTypes.string)
+    .isRequired,
+  fileType: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  objCollection: PropTypes.objectOf(
+    PropTypes.bool,
+  ).isRequired,
+  updateStore: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ test }) => ({ test });
+const mapStateToProps = ({
+  checkboxes,
+  fileType,
+  number,
+  objCollection,
+}) => ({
+  checkboxes,
+  fileType,
+  number,
+  objCollection,
+});
+const mapDispatchToProps = (dispatch) => ({
+  updateStore: (varToUpdate, value) =>
+    dispatch(
+      updateStoreAction(varToUpdate, value),
+    ),
+});
 
-export default connect(mapStateToProps)(Custom);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Custom);

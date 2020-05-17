@@ -34,19 +34,14 @@ const Label = styled.label`
       }
     `}
 
-    ${({ checkbox }) =>
-      checkbox &&
-      css`
-        height: 45px;
-        line-height: 45px;
-        padding: 0 30px;
-      `}
-    
-    ${({ disabled }) =>
-      disabled &&
-      css`
-        cursor: default;
-      `}
+  ${({ checkbox }) =>
+    checkbox &&
+    css`
+      height: 45px;
+      line-height: 45px;
+      padding: 0 30px;
+      text-transform: uppercase;
+    `}
 `;
 
 export default Label;
