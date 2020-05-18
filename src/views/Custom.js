@@ -15,6 +15,7 @@ import { updateStore as updateStoreAction } from 'actions';
 import Message from 'components/organisms/Message/Message';
 import MessageElement from 'components/atoms/MessageElement/MessageElement';
 import Warning from 'components/organisms/Warning/Warning';
+import prepareNDownloadData from 'logic';
 
 const StyledButton = styled(Button)`
   width: 275px;
@@ -107,8 +108,9 @@ class Custom extends Component {
   };
 
   handleWarningConfirm = () => {
+    const { objCollection, number } = this.props;
     console.log(
-      this.createObjectsArrayWithData(),
+      prepareNDownloadData(objCollection, number),
     );
     this.setState((prevState) => ({
       isWarning: !prevState.isWarning,
@@ -119,52 +121,6 @@ class Custom extends Component {
     this.setState((prevState) => ({
       isWarning: !prevState.isWarning,
     }));
-  };
-
-  createObjectTemplate = () => {
-    const { objCollection } = this.props;
-    console.log(objCollection);
-    const obj = {
-      id: true,
-    };
-
-    Object.keys(objCollection).forEach((el) => {
-      if (objCollection[el] === true) {
-        Object.assign(obj, { [el]: true });
-      }
-    });
-
-    return obj;
-  };
-
-  getData = (type) => {
-    switch (type) {
-      case 'name':
-        return 'test';
-      case 'surname':
-        return 'testsurname';
-      default:
-        return null;
-    }
-  };
-
-  createObjectsArrayWithData = () => {
-    const obj = this.createObjectTemplate();
-    const { number } = this.props;
-
-    const objArr = [];
-    for (let i = 0; i < number; i++) {
-      Object.keys(obj).forEach((key) => {
-        if (key === 'id') {
-          obj.id = i + 1;
-        } else {
-          obj[key] = this.getData(key);
-        }
-      });
-
-      objArr.push({ ...obj });
-    }
-    return objArr;
   };
 
   render() {

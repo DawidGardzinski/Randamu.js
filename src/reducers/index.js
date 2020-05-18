@@ -1,10 +1,11 @@
 const initialState = {
-  checkboxes: ['id', 'name', 'surname'],
+  checkboxes: ['id', 'name', 'surname', 'sex'],
   number: 10,
   fileType: 'JSON',
   objCollection: {
     name: false,
     surname: false,
+    sex: false,
   },
 };
 
