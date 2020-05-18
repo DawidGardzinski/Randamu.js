@@ -14,6 +14,7 @@ import { routes } from 'routes';
 import { updateStore as updateStoreAction } from 'actions';
 import Message from 'components/organisms/Message/Message';
 import MessageElement from 'components/atoms/MessageElement/MessageElement';
+import Warning from 'components/organisms/Warning/Warning';
 
 const StyledButton = styled(Button)`
   width: 275px;
@@ -75,6 +76,7 @@ class Custom extends Component {
   state = {
     step: 1,
     isMessage: false,
+    isWarning: true,
   };
 
   componentDidMount() {
@@ -100,11 +102,26 @@ class Custom extends Component {
   handleMessageClick = () => {
     this.setState((prevState) => ({
       isMessage: !prevState.isMessage,
+      isWarning: !prevState.isWarning,
+    }));
+  };
+
+  handleWarningConfirm = () => {
+    console.log('test');
+  };
+
+  handleWarningDeny = () => {
+    this.setState((prevState) => ({
+      isWarning: !prevState.isWarning,
     }));
   };
 
   render() {
-    const { step, isMessage } = this.state;
+    const {
+      step,
+      isMessage,
+      isWarning,
+    } = this.state;
     const {
       history,
       checkboxes,
@@ -116,6 +133,16 @@ class Custom extends Component {
 
     return (
       <>
+        {isWarning && (
+          <Warning
+            clickConfirm={
+              this.handleWarningConfirm
+            }
+            clickDeny={this.handleWarningDeny}>
+            Are you sure you want to download this
+            file?
+          </Warning>
+        )}
         {isMessage && (
           <Message
             amount={number}

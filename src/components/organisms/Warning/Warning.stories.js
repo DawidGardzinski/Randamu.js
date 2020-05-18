@@ -7,7 +7,9 @@ export default {
 };
 
 export const warning = () => (
-  <Warning>
+  <Warning
+    clickConfirm={() => null}
+    clickDeny={() => null}>
     Are you sure you want to download this file?
   </Warning>
 );

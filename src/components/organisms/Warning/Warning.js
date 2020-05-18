@@ -21,7 +21,11 @@ const StyledWrapper = styled.div`
     ${({ theme }) => theme.color.darkRed};
   padding: 20px;
   color: ${({ theme }) => theme.color.darkRed};
-  z-index: 9;
+  z-index: 9999;
+  @media (min-width: 730px) {
+    width: 730px;
+    height: 300px;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -39,6 +43,10 @@ const StyledButton = styled(Button)`
       background-color: ${({ theme }) =>
         theme.color.darkRed};
     `};
+
+  @media (min-width: 730px) {
+    margin: 5px;
+  }
 `;
 
 const WarningHeading = styled.h2`
@@ -71,9 +79,16 @@ const StyledParagraph = styled.p`
 const FlexboxWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media (min-width: 730px) {
+    flex-direction: row;
+  }
 `;
 
-const Warning = ({ children }) => (
+const Warning = ({
+  children,
+  clickConfirm,
+  clickDeny,
+}) => (
   <>
     <StyledWrapper>
       <WarningHeading>Warning</WarningHeading>
@@ -81,8 +96,12 @@ const Warning = ({ children }) => (
         {children}
       </StyledParagraph>
       <FlexboxWrapper>
-        <StyledButton>Yes</StyledButton>
-        <StyledButton deny>No</StyledButton>
+        <StyledButton onClick={clickConfirm}>
+          Yes
+        </StyledButton>
+        <StyledButton onClick={clickDeny} deny>
+          No
+        </StyledButton>
       </FlexboxWrapper>
     </StyledWrapper>
     <Curtain />
@@ -91,6 +110,8 @@ const Warning = ({ children }) => (
 
 Warning.propTypes = {
   children: PropTypes.string.isRequired,
+  clickConfirm: PropTypes.func.isRequired,
+  clickDeny: PropTypes.func.isRequired,
 };
 
 export default Warning;
