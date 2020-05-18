@@ -198,7 +198,6 @@ class Custom extends Component {
                     { setSubmitting },
                   ) => {
                     setTimeout(() => {
-                      console.log(values);
                       updateStore(
                         'objCollection',
                         values,
@@ -255,9 +254,12 @@ class Custom extends Component {
                   }}
                   validate={(values) => {
                     const errors = {};
-                    if (values.number < 1) {
+                    if (
+                      values.number < 1 ||
+                      values.number > 10000
+                    ) {
                       errors.number =
-                        'Can not be less then 1';
+                        'Can not be less then 1 and more then 10000';
                     }
                     return errors;
                   }}
@@ -266,7 +268,6 @@ class Custom extends Component {
                     { setSubmitting },
                   ) => {
                     setTimeout(() => {
-                      console.log(values);
                       updateStore(
                         'number',
                         values.number,
