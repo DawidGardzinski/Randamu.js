@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import { connect } from 'react-redux';
 import TopBar from 'components/molecules/TopBar/TopBar';
-import Button from 'components/atoms/Button/Button';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components';
-import Input from 'components/atoms/Input/Input';
-import Label from 'components/atoms/Label/Label';
 import { Redirect } from 'react-router-dom';
 import { routes } from 'routes';
 import { updateStore as updateStoreAction } from 'actions';
@@ -16,10 +11,9 @@ import Message from 'components/organisms/Message/Message';
 import MessageElement from 'components/atoms/MessageElement/MessageElement';
 import Warning from 'components/organisms/Warning/Warning';
 import prepareNDownloadData from 'logic';
-
-const StyledButton = styled(Button)`
-  width: 275px;
-`;
+import CustomFirstStep from 'components/organisms/CustomFirstStep/CustomFirstStep';
+import SecondStep from 'components/organisms/SecondStep/SecondStep';
+import ThirdStep from 'components/organisms/ThirdStep/ThirdStep';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -28,49 +22,6 @@ const StyledWrapper = styled.div`
   padding-bottom: 20px;
   min-height: 450px;
   justify-content: space-between;
-`;
-
-const StyledUL = styled.ul`
-  padding: 0;
-  list-style: none;
-  width: 270px;
-  margin-bottom: 30px;
-  height: 250px;
-
-  @media (min-width: 730px) {
-    max-height: 330px;
-    overflow-y: auto;
-  }
-`;
-
-const StyledLi = styled.li`
-  margin: 12px 0;
-  padding-left: 20px;
-`;
-
-const StyledContainer = styled.div`
-  display: grid;
-  gap: 20px;
-`;
-
-const StyledFormNumber = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  height: 275px;
-  justify-content: space-between;
-`;
-
-const StyledFormRadio = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  height: 275px;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StyledInputNumberWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 
 class Custom extends Component {
@@ -129,6 +80,46 @@ class Custom extends Component {
     }));
   };
 
+  handleSubmit = (
+    values,
+    setSubmitting,
+    currStep,
+  ) => {
+    const { history, updateStore } = this.props;
+
+    switch (currStep) {
+      case 1:
+        setTimeout(() => {
+          updateStore('objCollection', values);
+          setSubmitting(false);
+          history.push('/custom/step/2');
+        }, 400);
+        break;
+      case 2:
+        setTimeout(() => {
+          updateStore('number', values.number);
+          setSubmitting(false);
+          history.push('/custom/step/3');
+        }, 400);
+        break;
+      case 3:
+        setTimeout(() => {
+          updateStore(
+            'fileType',
+            values.fileType,
+          );
+          history.push('/custom/step/3');
+          this.setState((prevState) => ({
+            isMessage: !prevState.isMessage,
+          }));
+          setSubmitting(false);
+        }, 400);
+        break;
+      default:
+        console.error('Something went wrong');
+    }
+  };
+
   render() {
     const {
       step,
@@ -136,12 +127,10 @@ class Custom extends Component {
       isWarning,
     } = this.state;
     const {
-      history,
       checkboxes,
       fileType,
       number,
       objCollection,
-      updateStore,
     } = this.props;
 
     return (
@@ -192,189 +181,24 @@ class Custom extends Component {
           />
           <StyledWrapper>
             {step === 1 && (
-              <>
-                <Paragraph view={1}>
-                  Select what your data object
-                  should include
-                </Paragraph>
-                <Formik
-                  initialValues={objCollection}
-                  onSubmit={(
-                    values,
-                    { setSubmitting },
-                  ) => {
-                    setTimeout(() => {
-                      updateStore(
-                        'objCollection',
-                        values,
-                      );
-                      setSubmitting(false);
-                      history.push(
-                        '/custom/step/2',
-                      );
-                    }, 400);
-                  }}>
-                  {({ isSubmitting }) => (
-                    <Form>
-                      <StyledUL>
-                        {checkboxes.map((el) => (
-                          <StyledLi key={el}>
-                            <Field
-                              as={Input}
-                              type="checkbox"
-                              id={el}
-                              name={el}
-                              disabled={
-                                el === 'id'
-                              }
-                            />
-                            <Label
-                              htmlFor={el}
-                              checkbox>
-                              {el}
-                            </Label>
-                          </StyledLi>
-                        ))}
-                      </StyledUL>
-                      <StyledButton
-                        type="submit"
-                        next={1}
-                        disabled={isSubmitting}>
-                        Next step
-                      </StyledButton>
-                    </Form>
-                  )}
-                </Formik>
-              </>
+              <CustomFirstStep
+                objCollection={objCollection}
+                checkboxes={checkboxes}
+                onSubmit={this.handleSubmit}
+              />
             )}
 
             {step === 2 && (
-              <>
-                <Paragraph view={1}>
-                  How many objects do you want to
-                  have?
-                </Paragraph>
-                <Formik
-                  initialValues={{
-                    number,
-                  }}
-                  validate={(values) => {
-                    const errors = {};
-                    if (
-                      values.number < 1 ||
-                      values.number > 10000
-                    ) {
-                      errors.number =
-                        'Can not be less then 1 and more then 10000';
-                    }
-                    return errors;
-                  }}
-                  onSubmit={(
-                    values,
-                    { setSubmitting },
-                  ) => {
-                    setTimeout(() => {
-                      updateStore(
-                        'number',
-                        values.number,
-                      );
-                      setSubmitting(false);
-                      history.push(
-                        '/custom/step/3',
-                      );
-                    }, 400);
-                  }}>
-                  {({ isSubmitting, errors }) => (
-                    <StyledFormNumber>
-                      <StyledInputNumberWrapper>
-                        <Label htmlFor="number">
-                          Give a number
-                        </Label>
-                        <Field
-                          as={Input}
-                          type="number"
-                          id="number"
-                          name="number"
-                        />
-                        {errors.number}
-                      </StyledInputNumberWrapper>
-                      <StyledButton
-                        type="submit"
-                        next={1}
-                        disabled={isSubmitting}>
-                        Next step
-                      </StyledButton>
-                    </StyledFormNumber>
-                  )}
-                </Formik>
-              </>
+              <SecondStep
+                number={number}
+                onSubmit={this.handleSubmit}
+              />
             )}
             {step === 3 && (
-              <>
-                <Paragraph view={1}>
-                  Choose file format
-                </Paragraph>
-                <Formik
-                  initialValues={{
-                    fileType,
-                  }}
-                  onSubmit={(
-                    values,
-                    { setSubmitting },
-                  ) => {
-                    setTimeout(() => {
-                      updateStore(
-                        'fileType',
-                        values.fileType,
-                      );
-                      history.push(
-                        '/custom/step/3',
-                      );
-                      this.setState(
-                        (prevState) => ({
-                          isMessage: !prevState.isMessage,
-                        }),
-                      );
-                      setSubmitting(false);
-                    }, 400);
-                  }}>
-                  {({ isSubmitting }) => (
-                    <StyledFormRadio>
-                      <StyledContainer>
-                        <Field
-                          as={Input}
-                          type="radio"
-                          id="JSON"
-                          value="JSON"
-                          name="fileType"
-                        />
-                        <Label
-                          htmlFor="JSON"
-                          radio={1}>
-                          JSON
-                        </Label>
-                        <Field
-                          as={Input}
-                          type="radio"
-                          id="YML"
-                          value="YML"
-                          name="fileType"
-                        />
-                        <Label
-                          htmlFor="YML"
-                          radio={1}>
-                          YML
-                        </Label>
-                      </StyledContainer>
-                      <StyledButton
-                        type="submit"
-                        disabled={isSubmitting}>
-                        Finish
-                      </StyledButton>
-                    </StyledFormRadio>
-                  )}
-                </Formik>
-              </>
+              <ThirdStep
+                fileType={fileType}
+                onSubmit={this.handleSubmit}
+              />
             )}
           </StyledWrapper>
         </GridTemplate>
