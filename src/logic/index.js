@@ -4,6 +4,20 @@ import downloadData from 'logic/downloadData';
 const randomInt = (max) =>
   Math.round(Math.random() * Math.floor(max));
 
+const randomDate = (start, end) => {
+  const date = new Date(
+    +start + Math.random() * (end - start),
+  );
+
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
+  return `${day < 10 ? `0${day}` : day}.${
+    month < 10 ? `0${month}` : month
+  }.${year}`;
+};
+
 const createObjectTemplate = (objCollection) => {
   const obj = {
     id: true,
@@ -28,6 +42,15 @@ const getData = (type) => {
       const arr = data[`${type}s`];
       return arr[randomInt(arr.length - 1)];
     }
+    case 'country': {
+      const arr = data.countries;
+      return arr[randomInt(arr.length - 1)];
+    }
+    case 'birth':
+      return randomDate(
+        344473200000,
+        1589912977324,
+      );
     default:
       return null;
   }

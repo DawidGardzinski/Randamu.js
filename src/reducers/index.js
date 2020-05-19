@@ -6,6 +6,8 @@ const initialState = {
     'sex',
     'car',
     'color',
+    'birth',
+    'country',
   ],
   number: 10,
   fileType: 'JSON',
@@ -15,6 +17,8 @@ const initialState = {
     sex: false,
     car: false,
     color: false,
+    birth: true,
+    country: true,
   },
 };
 
