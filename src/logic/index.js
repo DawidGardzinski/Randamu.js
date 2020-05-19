@@ -1,22 +1,7 @@
 import data from 'logic/data';
 import downloadData from 'logic/downloadData';
-
-const randomInt = (max) =>
-  Math.round(Math.random() * Math.floor(max));
-
-const randomDate = (start, end) => {
-  const date = new Date(
-    +start + Math.random() * (end - start),
-  );
-
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
-
-  return `${day < 10 ? `0${day}` : day}.${
-    month < 10 ? `0${month}` : month
-  }.${year}`;
-};
+import randomInt from 'logic/randomInt';
+import randomDate from 'logic/randomDate';
 
 const createObjectTemplate = (objCollection) => {
   const obj = {

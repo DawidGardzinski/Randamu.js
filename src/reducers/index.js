@@ -17,8 +17,8 @@ const initialState = {
     sex: false,
     car: false,
     color: false,
-    birth: true,
-    country: true,
+    birth: false,
+    country: false,
   },
 };
 

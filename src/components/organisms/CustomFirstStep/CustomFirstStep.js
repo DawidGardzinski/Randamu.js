@@ -30,7 +30,7 @@ const StyledLi = styled.li`
   padding-left: 20px;
 `;
 
-const SecondStep = ({
+const CustomFirstStep = ({
   objCollection,
   onSubmit,
   checkboxes,
@@ -74,7 +74,7 @@ const SecondStep = ({
   </>
 );
 
-SecondStep.propTypes = {
+CustomFirstStep.propTypes = {
   objCollection: PropTypes.objectOf(
     PropTypes.bool,
   ).isRequired,
@@ -83,4 +83,4 @@ SecondStep.propTypes = {
     .isRequired,
 };
 
-export default SecondStep;
+export default CustomFirstStep;
