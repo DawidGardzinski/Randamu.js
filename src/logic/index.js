@@ -1,7 +1,8 @@
 import data from 'logic/data';
+import downloadData from 'logic/downloadData';
 
 const randomInt = (max) =>
-  Math.floor(Math.random() * Math.floor(max));
+  Math.round(Math.random() * Math.floor(max));
 
 const createObjectTemplate = (objCollection) => {
   const obj = {
@@ -23,7 +24,7 @@ const getData = (type) => {
       return data[`${type}s`];
     case 'surname': {
       const arr = data[`${type}s`];
-      return arr[randomInt(arr.length)];
+      return arr[randomInt(arr.length - 1)];
     }
     default:
       return null;
@@ -38,9 +39,7 @@ const createObjectsArrayWithData = (
   const objArr = [];
 
   for (let i = 0; i < number; i++) {
-    const sex = ['male', 'female'][
-      Math.round(Math.random())
-    ];
+    const sex = ['male', 'female'][randomInt(1)];
     Object.keys(obj).forEach((key) => {
       if (key === 'id') {
         obj.id = i + 1;
@@ -49,7 +48,7 @@ const createObjectsArrayWithData = (
       } else if (key === 'name') {
         const nameArr = getData('name')[sex];
         obj.name =
-          nameArr[randomInt(nameArr.length)];
+          nameArr[randomInt(nameArr.length - 1)];
       } else {
         obj[key] = getData(key);
       }
@@ -63,10 +62,15 @@ const createObjectsArrayWithData = (
 const prepareNDownloadData = (
   objCollection,
   number,
+  fileType,
 ) => {
   const obj = createObjectTemplate(objCollection);
+  const dataArr = createObjectsArrayWithData(
+    number,
+    obj,
+  );
 
-  return createObjectsArrayWithData(number, obj);
+  return downloadData(fileType, dataArr);
 };
 
 export default prepareNDownloadData;

@@ -108,9 +108,15 @@ class Custom extends Component {
   };
 
   handleWarningConfirm = () => {
-    const { objCollection, number } = this.props;
-    console.log(
-      prepareNDownloadData(objCollection, number),
+    const {
+      objCollection,
+      number,
+      fileType,
+    } = this.props;
+    prepareNDownloadData(
+      objCollection,
+      number,
+      fileType,
     );
     this.setState((prevState) => ({
       isWarning: !prevState.isWarning,
