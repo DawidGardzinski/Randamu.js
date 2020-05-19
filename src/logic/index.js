@@ -22,7 +22,9 @@ const getData = (type) => {
   switch (type) {
     case 'name':
       return data[`${type}s`];
-    case 'surname': {
+    case 'surname':
+    case 'car':
+    case 'color': {
       const arr = data[`${type}s`];
       return arr[randomInt(arr.length - 1)];
     }

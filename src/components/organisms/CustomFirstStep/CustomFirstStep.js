@@ -16,11 +16,12 @@ const StyledUL = styled.ul`
   list-style: none;
   width: 270px;
   margin-bottom: 30px;
-  height: 250px;
+  min-height: 250px;
 
   @media (min-width: 730px) {
     max-height: 330px;
     overflow-y: auto;
+    height: 250px;
   }
 `;
 
