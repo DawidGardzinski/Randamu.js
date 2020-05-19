@@ -52,12 +52,12 @@ const ThirdStep = ({ fileType, onSubmit }) => (
             <Field
               as={Input}
               type="radio"
-              id="YML"
-              value="YML"
+              id="TXT"
+              value="TXT"
               name="fileType"
             />
-            <Label htmlFor="YML" radio={1}>
-              YML
+            <Label htmlFor="TXT" radio={1}>
+              TXT
             </Label>
           </StyledContainer>
           <StyledButton

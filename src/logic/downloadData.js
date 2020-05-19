@@ -1,7 +1,10 @@
 const downloadData = (fileType, dataArr) => {
   switch (fileType) {
-    case 'JSON': {
-      const dataStr = `data:text/json;charset=utf-8, ${encodeURIComponent(
+    case 'JSON':
+    case 'TXT': {
+      const dataStr = `data:text/${
+        fileType === 'JSON' ? 'json' : 'plain'
+      };charset=utf-8, ${encodeURIComponent(
         JSON.stringify(dataArr),
       )}`;
       const downloadAnchorNode = document.createElement(
@@ -13,7 +16,7 @@ const downloadData = (fileType, dataArr) => {
       );
       downloadAnchorNode.setAttribute(
         'download',
-        `data.json`,
+        `data.${fileType.toLowerCase()}`,
       );
       document.body.appendChild(
         downloadAnchorNode,
