@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Cars",
+    "obj": {
+      "car": true,
+      "color": true
+    }
+  },
+  {
+    "name": "Persons",
+    "obj": {
+      "name": true,
+      "surname": true,
+      "sex": true,
+      "birth": true,
+      "country": true
+    }
+  }
+]

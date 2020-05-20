@@ -72,7 +72,6 @@ const Button = styled.button`
         border-radius: 15px 0 15px 0;
         background-color: ${({ theme }) =>
           theme.color.white};
-        min-width: 260px;
       `}
 
     ${({ info }) =>

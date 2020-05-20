@@ -30,6 +30,7 @@ const StyledNav = styled.nav`
 const StyledNavButton = styled(Button)`
   display: block;
   line-height: 45px;
+  min-width: 260px;
   font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
