@@ -6,6 +6,7 @@ import Label from 'components/atoms/Label/Label';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const StyledButton = styled(Button)`
   width: 275px;
@@ -24,10 +25,12 @@ const StyledFormRadio = styled(Form)`
   align-items: center;
 `;
 
-const ThirdStep = ({ fileType, onSubmit }) => (
+const ThirdStep = ({ fileType, onSubmit }) => {
+  const { t } = useTranslation();
+  return(
   <>
     <Paragraph view={1}>
-      Choose file format
+      {t('third step')}
     </Paragraph>
     <Formik
       initialValues={{
@@ -63,13 +66,13 @@ const ThirdStep = ({ fileType, onSubmit }) => (
           <StyledButton
             type="submit"
             disabled={isSubmitting}>
-            Finish
+            {t('finish')}
           </StyledButton>
         </StyledFormRadio>
       )}
     </Formik>
   </>
-);
+)};
 
 ThirdStep.propTypes = {
   fileType: PropTypes.string.isRequired,
