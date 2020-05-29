@@ -1,13 +1,13 @@
 [
   {
-    "name": "Cars",
+    "name": "cars",
     "obj": {
       "car": true,
       "color": true
     }
   },
   {
-    "name": "Persons",
+    "name": "persons",
     "obj": {
       "name": true,
       "surname": true,

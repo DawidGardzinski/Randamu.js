@@ -4,6 +4,7 @@ import Button from 'components/atoms/Button/Button';
 import warningIcon from 'assets/warning.svg';
 import PropTypes from 'prop-types';
 import Curtain from 'components/atoms/Curtain/Curtain';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.div`
   position: absolute;
@@ -85,31 +86,34 @@ const FlexboxWrapper = styled.div`
 `;
 
 const Warning = ({
-  children,
   clickConfirm,
   clickDeny,
-}) => (
-  <>
-    <StyledWrapper>
-      <WarningHeading>Warning</WarningHeading>
-      <StyledParagraph>
-        {children}
-      </StyledParagraph>
-      <FlexboxWrapper>
-        <StyledButton onClick={clickConfirm}>
-          Yes
-        </StyledButton>
-        <StyledButton onClick={clickDeny} deny>
-          No
-        </StyledButton>
-      </FlexboxWrapper>
-    </StyledWrapper>
-    <Curtain />
-  </>
-);
+}) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <StyledWrapper>
+        <WarningHeading>
+          {t('warning')}
+        </WarningHeading>
+        <StyledParagraph>
+          {t('warning desc')}
+        </StyledParagraph>
+        <FlexboxWrapper>
+          <StyledButton onClick={clickConfirm}>
+            {t('yes')}
+          </StyledButton>
+          <StyledButton onClick={clickDeny} deny>
+            {t('no')}
+          </StyledButton>
+        </FlexboxWrapper>
+      </StyledWrapper>
+      <Curtain />
+    </>
+  );
+};
 
 Warning.propTypes = {
-  children: PropTypes.string.isRequired,
   clickConfirm: PropTypes.func.isRequired,
   clickDeny: PropTypes.func.isRequired,
 };

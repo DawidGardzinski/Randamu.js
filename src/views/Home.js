@@ -4,6 +4,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 import { routes } from 'routes';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -49,23 +50,25 @@ const StyledLangButton = styled(Button)`
   bottom: 10px;
 `;
 
-const Home = () => (
+const Home = () => {
+  const { t } = useTranslation();
+  return(
   <StyledWrapper>
     <StyledNav>
       <StyledHeading as="h2">
-        Select mode
+        {t('select mode')}
       </StyledHeading>
       <StyledNavButton
         as={NavLink}
         to={routes.templates}
         block={1}>
-        Templates
+        {t('templates')}
       </StyledNavButton>
       <StyledNavButton
         as={NavLink}
         to={routes.custom}
         block={1}>
-        Custom
+        {t('custom')}
       </StyledNavButton>
     </StyledNav>
     <StyledHelpButton
@@ -76,6 +79,6 @@ const Home = () => (
     </StyledHelpButton>
     <StyledLangButton info>EN</StyledLangButton>
   </StyledWrapper>
-);
+)}
 
 export default Home;

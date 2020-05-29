@@ -16,6 +16,7 @@ instructions are provided directly in the app
 + React Router
 + prop-types
 + Formik
++ i18n
 
 ## Available languages
 + English

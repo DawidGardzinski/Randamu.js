@@ -4,6 +4,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.div`
   background-color: ${({ theme }) =>
@@ -48,15 +49,17 @@ const StyledStep = styled.p`
   }
 `;
 
-const TopBar = ({ mode, path, step }) => (
+const TopBar = ({ mode, path, step}) => {
+  const { t } = useTranslation();
+  return(
   <StyledWrapper>
     <Button as={Link} to={path} back={1} />
     <StyledHeading as="h2">{mode}</StyledHeading>
     {step !== 0 && (
-      <StyledStep>Step {step}</StyledStep>
+      <StyledStep>{t('step')} {step}</StyledStep>
     )}
   </StyledWrapper>
-);
+)}
 
 TopBar.defaultProps = {
   step: 0,

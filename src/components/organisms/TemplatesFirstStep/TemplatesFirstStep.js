@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import templates from 'data/templates.json';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.div`
   display: grid;
@@ -15,18 +16,20 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const TemplatesFirstStep = ({ onClick }) => (
+const TemplatesFirstStep = ({ onClick }) =>{ 
+const { t } = useTranslation();
+return(
   <StyledWrapper>
     {templates.map((el) => (
       <Button
         block
         key={el.name}
         onClick={() => onClick(el.obj)}>
-        {el.name}
+        {t(el.name)}
       </Button>
     ))}
   </StyledWrapper>
-);
+)};
 
 TemplatesFirstStep.propTypes = {
   onClick: PropTypes.func.isRequired,

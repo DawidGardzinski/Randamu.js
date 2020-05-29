@@ -6,6 +6,7 @@ import Label from 'components/atoms/Label/Label';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const StyledButton = styled(Button)`
   width: 275px;
@@ -23,10 +24,12 @@ const StyledInputNumberWrapper = styled.div`
   flex-direction: column;
 `;
 
-const SecondStep = ({ number, onSubmit }) => (
+const SecondStep = ({ number, onSubmit }) => {
+  const { t } = useTranslation();
+  return(
   <>
     <Paragraph view={1}>
-      How many objects do you want to have?
+      {t("second step")}
     </Paragraph>
     <Formik
       initialValues={{
@@ -38,8 +41,7 @@ const SecondStep = ({ number, onSubmit }) => (
           values.number < 1 ||
           values.number > 10000
         ) {
-          errors.number =
-            'Can not be less then 1 and more then 10000';
+          errors.number = t("input number error");
         }
         return errors;
       }}
@@ -50,7 +52,7 @@ const SecondStep = ({ number, onSubmit }) => (
         <StyledFormNumber>
           <StyledInputNumberWrapper>
             <Label htmlFor="number">
-              Give a number
+              {t("input number label")}
             </Label>
             <Field
               as={Input}
@@ -64,13 +66,13 @@ const SecondStep = ({ number, onSubmit }) => (
             type="submit"
             next={1}
             disabled={isSubmitting}>
-            Next step
+            {t("next step")}
           </StyledButton>
         </StyledFormNumber>
       )}
     </Formik>
   </>
-);
+)};
 
 SecondStep.propTypes = {
   number: PropTypes.number.isRequired,

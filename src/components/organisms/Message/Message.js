@@ -4,6 +4,7 @@ import Button from 'components/atoms/Button/Button';
 import PropTypes from 'prop-types';
 import Curtain from 'components/atoms/Curtain/Curtain';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -60,19 +61,21 @@ const Message = ({
   amount,
   fileType,
   click,
-}) => (
+}) => {
+  const { t } = useTranslation();
+  return(
   <>
     <StyledWrapper>
       <div>
         <StyledHeading>
-          Each object will contain:
+          {t('message heading')}
         </StyledHeading>
         <StyledList>{children}</StyledList>
         <StyledParagraph>
-          Total amount of objects: {amount}
+        {t('message amount')} {amount}
         </StyledParagraph>
         <StyledParagraph>
-          File format: {fileType}
+        {t('message fileFormat')} {fileType}
         </StyledParagraph>
       </div>
       <StyledButton onClick={click}>
@@ -81,7 +84,7 @@ const Message = ({
     </StyledWrapper>
     <Curtain />
   </>
-);
+)};
 
 Message.propTypes = {
   children: PropTypes.oneOfType([

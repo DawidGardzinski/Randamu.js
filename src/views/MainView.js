@@ -175,10 +175,7 @@ class MainView extends Component {
             clickConfirm={
               this.handleWarningConfirm
             }
-            clickDeny={this.handleWarningDeny}>
-            Are you sure you want to download this
-            file?
-          </Warning>
+            clickDeny={this.handleWarningDeny}/>
         )}
         {isMessage && (
           <Message

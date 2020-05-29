@@ -5,6 +5,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import styled from 'styled-components';
 import { routes } from 'routes';
 import GridTemplate from 'templates/GridTemplate';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -18,31 +19,28 @@ const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.fontSize.l};
 `;
 
-const Informations = () => (
+const Informations = () => {
+  const { t } = useTranslation();
+  return(
   <GridTemplate>
     <TopBar
-      mode="Informations"
+      mode={t('informations')}
       path={routes.home}
     />
     <StyledWrapper>
-      <StyledHeading as="h2">About</StyledHeading>
+      <StyledHeading as="h2">{t('about')}</StyledHeading>
       <Paragraph>
-        Randamu.js is JavaScript server less
-        application which allows you to get
-        example data for your projects
+        {t('about desc')}
       </Paragraph>
 
       <StyledHeading as="h2">
-        Introduction
+        {t('introduction')}
       </StyledHeading>
       <Paragraph>
-        Everything you have to do is choose mode.
-        <b>Templates</b> mode contains previously
-        prepared objects. <b>Custom</b> gives you
-        opportunity to make objects on your own.
+      {t('introduction desc')}
       </Paragraph>
     </StyledWrapper>
   </GridTemplate>
-);
+)};
 
 export default Informations;
