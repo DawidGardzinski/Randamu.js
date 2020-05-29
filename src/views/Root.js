@@ -10,8 +10,7 @@ import { Provider } from 'react-redux';
 import store from 'store';
 import Home from 'views/Home';
 import Informations from 'views/Informations';
-import Custom from 'views/Custom';
-import Templates from 'views/Templates';
+import MainView from 'views/MainView';
 import { routes } from 'routes';
 
 function Root() {
@@ -41,7 +40,7 @@ function Root() {
             />
             <Route
               path={routes.customSteps}
-              component={Custom}
+              component={MainView}
             />
             <Route
               exact
@@ -54,7 +53,7 @@ function Root() {
             />
             <Route
               path={routes.templatesSteps}
-              component={Templates}
+              component={MainView}
             />
           </Switch>
         </BrowserRouter>
