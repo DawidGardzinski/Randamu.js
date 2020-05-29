@@ -31,5 +31,7 @@
   "input number label": "Give a number",
   "input number error": "Can not be less then 1 and more then 10000",
   "persons": "Persons",
-  "cars": "Cars"
+  "cars": "Cars",
+  "lang": "EN",
+  "back": "Back"
 }

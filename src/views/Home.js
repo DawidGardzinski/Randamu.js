@@ -50,8 +50,9 @@ const StyledLangButton = styled(Button)`
   bottom: 10px;
 `;
 
+
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return(
   <StyledWrapper>
     <StyledNav>
@@ -77,7 +78,14 @@ const Home = () => {
       info={1}>
       ?
     </StyledHelpButton>
-    <StyledLangButton info>EN</StyledLangButton>
+    <StyledLangButton onClick={() => {
+      if(t('lang') === "EN"){
+        i18n.changeLanguage('pl');
+      } else{
+        i18n.changeLanguage('en');
+      }
+      
+    }} info>{t('lang')}</StyledLangButton>
   </StyledWrapper>
 )}
 

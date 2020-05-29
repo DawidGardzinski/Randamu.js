@@ -53,7 +53,7 @@ const TopBar = ({ mode, path, step}) => {
   const { t } = useTranslation();
   return(
   <StyledWrapper>
-    <Button as={Link} to={path} back={1} />
+    <Button as={Link} to={path} back={1}> {t('back')} </Button>
     <StyledHeading as="h2">{mode}</StyledHeading>
     {step !== 0 && (
       <StyledStep>{t('step')} {step}</StyledStep>

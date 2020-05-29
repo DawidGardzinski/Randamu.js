@@ -3,6 +3,7 @@ import arrowIcon from 'assets/arrow.svg';
 import whiteArrowIcon from 'assets/whiteArrow.svg';
 import backArrowIcon from 'assets/backArrow.svg';
 
+
 const Button = styled.button`
   border: none;
   height: 55px;
@@ -43,7 +44,7 @@ const Button = styled.button`
         theme.color.primary};
     `}
 
-    ${({ back }) =>
+    ${({ back}) =>
       back &&
       css`
         height: 35px;
@@ -55,9 +56,6 @@ const Button = styled.button`
         line-height: 35px;
         font-size: ${({ theme }) =>
           theme.fontSize.m};
-        ::before {
-          content: 'BACK';
-        }
       `}
 
     ${({ block }) =>
