@@ -54,7 +54,7 @@ const TopBar = ({ mode, path, step}) => {
   return(
   <StyledWrapper>
     <Button as={Link} to={path} back={1}> {t('back')} </Button>
-    <StyledHeading as="h2">{mode}</StyledHeading>
+    <StyledHeading as="h2">{t(mode.toLowerCase())}</StyledHeading>
     {step !== 0 && (
       <StyledStep>{t('step')} {step}</StyledStep>
     )}

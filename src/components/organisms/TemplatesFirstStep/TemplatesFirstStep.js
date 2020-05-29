@@ -14,6 +14,9 @@ const StyledWrapper = styled.div`
   @media (max-width: 730px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (max-width: 530px){
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const TemplatesFirstStep = ({ onClick }) =>{ 
