@@ -20,6 +20,7 @@ const initialState = {
     birth: false,
     country: false,
   },
+  isStart: true
 };
 
 const rootReducer = (

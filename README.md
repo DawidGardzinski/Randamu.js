@@ -20,3 +20,4 @@ instructions are provided directly in the app
 
 ## Available languages
 + English
++ Polish

@@ -1,6 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
+import PropTypes from 'prop-types';
+
+const animate = keyframes`
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-3000px);
+  }
+`;
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -13,6 +24,12 @@ const StyledWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index: 9999;
+  ${({ hide }) =>
+    hide &&
+    css`
+      animation: ${animate} 2s ease;
+      animation-fill-mode: forwards;
+    `}
 `;
 
 const StyledHeader = styled.header`
@@ -39,16 +56,22 @@ const StyledButton = styled(Button)`
   margin-bottom: 70px;
 `;
 
-const StartScreen = () => (
-  <StyledWrapper>
+const StartScreen = ({isHidden, onClick}) => (
+  <StyledWrapper id="startscreen" hide={isHidden}>
     <StyledHeader>
       <StyledHeading>Randamu.js</StyledHeading>
       <StyledParagraph>
         Example data for your projects
       </StyledParagraph>
     </StyledHeader>
-    <StyledButton start />
+    <StyledButton onClick={onClick} start={1} />
   </StyledWrapper>
 );
+
+
+StartScreen.propTypes = {
+  isHidden: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
+};
 
 export default StartScreen;
