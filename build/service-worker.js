@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Randamu.js/precache-manifest.ff4b58ad1572f4b170f2cbca566ae4b0.js"
+  "/Randamu.js/precache-manifest.ca67fa148bedd5cad8b0435d9b9b6fb4.js"
 );
 
 self.addEventListener('message', (event) => {
