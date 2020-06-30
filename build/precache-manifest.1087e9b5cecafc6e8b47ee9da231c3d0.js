@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "167100aa1f98f010fb87098d82598487",
+    "revision": "c9e7ec66199f23ae604937bc568ea458",
     "url": "/Randamu.js/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Randamu.js/static/js/2.42613b09.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "89705f60ef41987be74c",
-    "url": "/Randamu.js/static/js/main.3fdcd5be.chunk.js"
+    "revision": "b0d58e4e1c5eb1454ad8",
+    "url": "/Randamu.js/static/js/main.a1f468a4.chunk.js"
   },
   {
     "revision": "da9049b86e69acc60f50",
