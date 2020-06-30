@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/Randamu.js/static/js/main.740ff75f.chunk.js",
-    "main.js.map": "/Randamu.js/static/js/main.740ff75f.chunk.js.map",
+    "main.js": "/Randamu.js/static/js/main.3fdcd5be.chunk.js",
+    "main.js.map": "/Randamu.js/static/js/main.3fdcd5be.chunk.js.map",
     "runtime-main.js": "/Randamu.js/static/js/runtime-main.5657eb7c.js",
     "runtime-main.js.map": "/Randamu.js/static/js/runtime-main.5657eb7c.js.map",
-    "static/js/2.4124fed6.chunk.js": "/Randamu.js/static/js/2.4124fed6.chunk.js",
-    "static/js/2.4124fed6.chunk.js.map": "/Randamu.js/static/js/2.4124fed6.chunk.js.map",
+    "static/js/2.42613b09.chunk.js": "/Randamu.js/static/js/2.42613b09.chunk.js",
+    "static/js/2.42613b09.chunk.js.map": "/Randamu.js/static/js/2.42613b09.chunk.js.map",
     "index.html": "/Randamu.js/index.html",
-    "precache-manifest.ca67fa148bedd5cad8b0435d9b9b6fb4.js": "/Randamu.js/precache-manifest.ca67fa148bedd5cad8b0435d9b9b6fb4.js",
+    "precache-manifest.ff4b58ad1572f4b170f2cbca566ae4b0.js": "/Randamu.js/precache-manifest.ff4b58ad1572f4b170f2cbca566ae4b0.js",
     "service-worker.js": "/Randamu.js/service-worker.js",
-    "static/js/2.4124fed6.chunk.js.LICENSE.txt": "/Randamu.js/static/js/2.4124fed6.chunk.js.LICENSE.txt",
+    "static/js/2.42613b09.chunk.js.LICENSE.txt": "/Randamu.js/static/js/2.42613b09.chunk.js.LICENSE.txt",
     "static/media/arrow.svg": "/Randamu.js/static/media/arrow.38ffc2f2.svg",
     "static/media/backArrow.svg": "/Randamu.js/static/media/backArrow.45875439.svg",
     "static/media/checkMark.svg": "/Randamu.js/static/media/checkMark.b5966902.svg",
@@ -18,7 +18,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5657eb7c.js",
-    "static/js/2.4124fed6.chunk.js",
-    "static/js/main.740ff75f.chunk.js"
+    "static/js/2.42613b09.chunk.js",
+    "static/js/main.3fdcd5be.chunk.js"
   ]
 }

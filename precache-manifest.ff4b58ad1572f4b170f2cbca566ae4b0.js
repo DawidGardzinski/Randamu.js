@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2b9f8b78e23eb79096c3f4afb87972cf",
+    "revision": "167100aa1f98f010fb87098d82598487",
     "url": "/Randamu.js/index.html"
   },
   {
-    "revision": "1bf2773ab789d6e26cae",
-    "url": "/Randamu.js/static/js/2.4124fed6.chunk.js"
+    "revision": "84b57a810a15d10e0af5",
+    "url": "/Randamu.js/static/js/2.42613b09.chunk.js"
   },
   {
     "revision": "77e7f328dacc981fca681ee4ae94d669",
-    "url": "/Randamu.js/static/js/2.4124fed6.chunk.js.LICENSE.txt"
+    "url": "/Randamu.js/static/js/2.42613b09.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0073504e7f971e05e49e",
-    "url": "/Randamu.js/static/js/main.740ff75f.chunk.js"
+    "revision": "89705f60ef41987be74c",
+    "url": "/Randamu.js/static/js/main.3fdcd5be.chunk.js"
   },
   {
     "revision": "da9049b86e69acc60f50",
